@@ -9,6 +9,7 @@ const genBtn = document.getElementById("generate")
 generateBtn.addEventListener('click', async function () {
    spin()
     const response = await fetch(url)
+    console.log(response)
     const data = await response.json()
     stopSpin()
     jokeSetupEl.textContent = data.setup
