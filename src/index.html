@@ -5,23 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/dist/output.css" rel="stylesheet">
-    <link  href="../dist/hover.css" rel="stylesheet">
+    <link href="../dist/hover.css" rel="stylesheet">
 </head>
 
 <body class="bg-gradient-to-b from-yellow-400 via-yellow-500 to-yellow-600 ">
 
-    <div id="container" class="h-screen flex items-center  flex-col gap-10">
-        <h1 class="text-black text-center text-6xl font-bold  ">Joke Generator</h1>
-        <div id="blackbox" class="flex flex-col items-center justify-evenly  bg-gray-800 rounded-lg text-slate-200 gap-1 w-80 shadow-md shadow-gray-800 ">
+    <div id="container" class="flex flex-col items-center h-screen gap-10">
+        <h1 class="text-6xl font-bold text-center text-black ">Joke Generator</h1>
+        <div id="blackbox" class="flex flex-col items-center gap-1 bg-gray-800 rounded-lg shadow-md justify-evenly text-slate-200 w-80 shadow-gray-800 ">
             <div id="img-ctn" class="flex justify-between gap-3">
             </div>
             <img src="../images/joy-emoji.png" alt="Laughing emoji" class="w-auto h-20 mt-10">
-            <div id="setup" class=" text-slate-200 text-lg m-5 text-center"></div>
-            <div id="delivery" class="text-slate-200 text-lg text-center m-5 "></div>
+            <div id="setup" class="m-5 text-lg text-center text-slate-200"></div>
+            <div id="delivery" class="m-5 text-lg text-center text-slate-200 "></div>
             <div id="btn-wrapper" class="flex flex-row gap-3">
-                <button id="backBtn" class="hvr-backward"><img src="../images/left-arrow.png" alt="back button" class="h-10 font-bold self-start mb-6"></button>
-                <button id="generate" type="button" class=" bg-green-600 hover:bg-green-700 duration-75  mb-6 rounded-lg p-2 ">Generate</button>
-                <button id="forwardBtn" class="hvr-forward"><img src="../images/right-arrow.png" alt="forward button" class="h-10 font-bold self-end mb-6"></button>
+                <button id="backBtn" class="hvr-backward"><img src="../images/left-arrow.png" alt="back button" class="self-start h-10 mb-6 font-bold"></button>
+                <button id="generate" type="button" class="p-2 mb-6 duration-75 bg-green-600 rounded-lg hover:bg-green-700">Generate</button>
+                <button id="forwardBtn" class="hvr-forward"><img src="../images/right-arrow.png" alt="forward button" class="self-end h-10 mb-6 font-bold"></button>
             </div>
 
         </div>

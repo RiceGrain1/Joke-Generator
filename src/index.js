@@ -3,26 +3,53 @@ const url = "https://v2.jokeapi.dev/joke/Any";
 const jokeSetupEl = document.getElementById("setup");
 const jokeDeliveryEl = document.getElementById("delivery");
 const genBtn = document.getElementById("generate");
-const backBtn = document.getElementById("backBtn")
-const forwardBtn = document.getElementById("forwardBtn")
+const backBtn = document.getElementById("backBtn");
+const forwardBtn = document.getElementById("forwardBtn");
 
 let arrayVar = -1;
-let amountOfJokes = 0
+let amountOfJokes = 0;
 
 let jokes = {
   SetupArray: [],
-  DeliveryArray: [],
+  DeliveryArray: []
 };
+
+backBtn.addEventListener("click", () => {
+  if (arrayVar === 0) {
+    backBtn.disabled = true;
+    console.warn("Back button disabled");
+  } else {
+    arrayVar--;
+    jokeSetupEl.textContent = jokes.SetupArray[arrayVar];
+    jokeDeliveryEl.textContent = jokes.DeliveryArray[arrayVar];
+    console.log(arrayVar);
+  }
+});
+
+forwardBtn.addEventListener("click", () => {
+  if (arrayVar === jokes.SetupArray.length - 1) {
+    forwardBtn.disabled = true;
+    console.warn("Forward button disabled");
+  } else {
+    arrayVar++;
+    jokeSetupEl.textContent = jokes.SetupArray[arrayVar];
+    jokeDeliveryEl.textContent = jokes.DeliveryArray[arrayVar];
+    console.log(arrayVar);
+  }
+});
+
+
 
 generateBtn.addEventListener("click", async function () {
   startSpin();
   const response = await fetch(url);
   const data = await response.json();
-  arrayVar++
-  amountOfJokes++
+
+  arrayVar++;
+  amountOfJokes++;
   //Re-enable the back and forward buttons
-  backBtn.disabled = false
-  forwardBtn.disabled = false
+  backBtn.disabled = false;
+  forwardBtn.disabled = false;
   jokes.SetupArray.push(data.setup);
   jokes.DeliveryArray.push(data.delivery);
 
@@ -32,7 +59,7 @@ generateBtn.addEventListener("click", async function () {
 
   console.log(jokes.SetupArray);
   console.log(jokes.DeliveryArray);
-  console.log(arrayVar)
+  console.log(arrayVar);
 });
 
 function startSpin() {
@@ -40,37 +67,12 @@ function startSpin() {
   genBtn.classList.add("animate-spin");
   genBtn.classList.remove("bg-green-600");
   genBtn.classList.remove("hover:bg-green-700");
-  genBtn.disabled = true
+  genBtn.disabled = true;
 }
 
 function stopSpin() {
   genBtn.classList.remove("animate-spin");
   genBtn.classList.add("bg-green-600");
   genBtn.innerHTML = `Generate`;
-  genBtn.disabled = false
+  genBtn.disabled = false;
 }
-
-
-backBtn.addEventListener("click", () => {
-  if (arrayVar === 0) {
-    backBtn.disabled = true
-    console.warn("Back button disabled");
-  } else {
-    arrayVar--
-      jokeSetupEl.textContent = jokes.SetupArray[arrayVar]
-      jokeDeliveryEl.textContent = jokes.DeliveryArray[arrayVar]
-      console.log(arrayVar)
-  }
-})
-
-forwardBtn.addEventListener("click", () => {
-  if (arrayVar === jokes.SetupArray.length - 1) {
-    forwardBtn.disabled = true
-    console.warn("Forward button disabled")
-  } else {
-      arrayVar++
-      jokeSetupEl.textContent = jokes.SetupArray[arrayVar]
-      jokeDeliveryEl.textContent = jokes.DeliveryArray[arrayVar]
-      console.log(arrayVar)
-  }
-})
